@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { getPosts } from "./posts/actions";
+import PostComponent from "./_ui/PostComponent";
+import MenuHome from "./_ui/MenuHome";
 
 export interface PostType {
   id: number
@@ -46,6 +48,7 @@ export default function Home() {
         gap-4
       "
     >
+      <MenuHome />
       {loadingPosts && (
         <div
           className="text-center py-8"
@@ -55,33 +58,7 @@ export default function Home() {
       )}
       {posts && (
         posts.map((post) => (
-          <div
-            key={post.id}
-            className="
-              flex
-              flex-col
-            "
-          >
-            <div
-              className="
-                bg-blue-400
-                text-white
-                text-lg
-                font-bold
-                p-2
-              "
-            >
-              <span>{post.title}</span>
-            </div>
-            <div
-              className="
-                p-2
-                border
-              "
-            >
-              <p>{post.body}</p>
-            </div>
-          </div>
+          <PostComponent key={post.id} post={post} />
         ))
       )}
     </div>

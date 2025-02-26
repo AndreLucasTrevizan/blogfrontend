@@ -9,6 +9,7 @@ export default function FormSignUp() {
         flex
         gap-4
         flex-col
+        bg-white
       "
     >
       <div className="text-center mb-4">

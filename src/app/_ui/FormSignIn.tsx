@@ -20,6 +20,7 @@ export default function FormSignIn() {
         flex
         gap-4
         flex-col
+        bg-white
       "
       action={formAction}
     >

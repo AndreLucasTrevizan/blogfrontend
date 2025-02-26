@@ -18,13 +18,16 @@ export default function FormCreatePost() {
         flex-col
         border
         rounded
+        bg-white
       "
       action={formAction}
     >
       <div
         className="
-          bg-stone-100
+          bg-blue-400
           p-4
+          text-white
+          font-bold
         "
       >
         <span className="text-lg">O que vai postar hoje?</span>
@@ -58,13 +61,9 @@ export default function FormCreatePost() {
           "
         >{pending ? "Carregando" : "Criar post"}</button>
       </div>
-      <div
-        className="p-4"
-      >
-        {state.message && (
-          <ErrorMessage message={state.message} />
-        )}
-      </div>
+      {state.message && (
+        <ErrorMessage message={state.message} />
+      )}
     </form>
   );
 }
