@@ -22,25 +22,40 @@ export default async function Profile() {
           rounded
           p-4
           flex
-          flex-col
+          flex-wrap
           gap-4
         "
       >
-        <div>
-          <span>{user.name}</span>
+        <div className="flex flex-col gap-4 w-96">
+          <div className="flex justify-between">
+            <label>Nome</label>
+            <span>{user.name}</span>
+          </div>
+          <div className="flex justify-between">
+            <label>E-mail</label>
+            <span>{user.email}</span>
+          </div>
+          <div
+            className="flex justify-between"
+          >
+            <label>Criado em</label>
+            <div className="w-max flex gap-4">
+              <span>{new Date(user.createdAt).toLocaleDateString('pt-br')}</span>
+              <span>{new Date(user.createdAt).toLocaleTimeString('pt-br')}</span>
+            </div>
+          </div>
+          <div
+            className="flex justify-between"
+          >
+            <label>Atualizado em</label>
+            <div className="w-max flex gap-4">
+              <span>{new Date(user.updatedAt).toLocaleDateString('pt-br')}</span>
+              <span>{new Date(user.updatedAt).toLocaleTimeString('pt-br')}</span>
+            </div>
+          </div>
         </div>
-        <span>{user.email}</span>
-        <div
-          className="flex gap-4"
-        >
-          <span>{new Date(user.createdAt).toLocaleDateString('pt-br')}</span>
-          <span>{new Date(user.createdAt).toLocaleTimeString('pt-br')}</span>
-        </div>
-        <div
-          className="flex gap-4"
-        >
-          <span>{new Date(user.updatedAt).toLocaleDateString('pt-br')}</span>
-          <span>{new Date(user.updatedAt).toLocaleTimeString('pt-br')}</span>
+        <div className="flex flex-1 justify-end items-start">
+          <button className="font-bold text-red-500">Encerrar seção</button>
         </div>
       </div>
     </div>
