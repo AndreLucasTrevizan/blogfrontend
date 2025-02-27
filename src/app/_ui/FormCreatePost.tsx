@@ -62,7 +62,11 @@ export default function FormCreatePost() {
         >{pending ? "Carregando" : "Criar post"}</button>
       </div>
       {state.message && (
-        <ErrorMessage message={state.message} />
+        <div
+          className="p-4"
+        >
+          <ErrorMessage message={state.message} />
+        </div>
       )}
     </form>
   );
