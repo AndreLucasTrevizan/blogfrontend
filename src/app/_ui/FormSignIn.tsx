@@ -65,7 +65,7 @@ export default function FormSignIn() {
       </div>
       <button
         className="
-          bg-blue-400
+          bg-[#00D1CD]
           text-white
           font-bold
           py-2
@@ -74,7 +74,7 @@ export default function FormSignIn() {
         "
       >{pending ? "Carregando" : "Entrar"}</button>
       <div className="text-center">
-        <Link href={"/sign_up"} className="text-blue-400 font-bold text-sm">Criar conta</Link>
+        <Link href={"/sign_up"} className="text-[#00D1CD] font-bold text-sm">Criar conta</Link>
       </div>
       {state.message && (
         <ErrorMessage message={state.message}/>

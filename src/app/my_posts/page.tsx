@@ -17,10 +17,16 @@ export default async function MyPosts() {
       "
     >
       <h1 className="text-xl">Suas postagens</h1>
-      {posts && (
+      {posts.length > 0 ? (
         posts.map((post) => (
           <PostComponent key={post.id} post={post} />
         ))
+      ) : (
+        <div
+          className="text-center"
+        >
+          <span className="text-sm">Você ainda não fez postagens</span>
+        </div>
       )}
     </div>
   );

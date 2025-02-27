@@ -17,7 +17,7 @@ export default function NotFound() {
       "
     >
       <h2 className="text-2xl">Não encontramos a página solicitada</h2>
-      <Link href="/" className="text-blue-400 font-bold">Voltar para o site</Link>
+      <Link href="/" className="text-[#00D1CD] font-bold">Voltar para o site</Link>
     </div>
   );
 }

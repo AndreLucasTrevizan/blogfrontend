@@ -76,7 +76,7 @@ export default function PostComponent({
               p-2
             "
           >
-            <Link href={`/posts/${post.id}`} className="text-blue-400 font-bold">Ver mais</Link>
+            <Link href={`/posts/${post.id}`} className="text-[#00D1CD] font-bold">Ver mais</Link>
           </div>
         )}
         {pathname.includes("/posts/") && (
@@ -93,7 +93,7 @@ export default function PostComponent({
                 type="button"
                 onClick={() => setShowFormComment(true)}
                 className="
-                  text-blue-400
+                  text-[#00D1CD]
                   font-bold
                   hover:cursor-pointer
                 "
