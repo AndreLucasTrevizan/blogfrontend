@@ -10,8 +10,8 @@ export default function Title() {
     <div
       className="flex flex-col"
     >
-      {pathname == "/sign_in" ? <span className="text-2xl">Blog</span> : pathname == "/sign_up" ? <span className="text-2xl">Blog</span> : <Link href="/" className="text-2xl">Blog</Link>}
-      <small>Desenvolvido por André Lucas Trevizan</small>
-    </div>
+      {pathname == "/sign_in" ? <span className="text-2xl">Blog</span> : pathname == "/sign_up" ? <span className="text-2xl">Blog</span> : <Link href="/" className="text-2xl w-max">Blog</Link>}
+      <small>Desenvolvido por <Link className="hover:underline" href="https://github.com/AndreLucasTrevizan/" target="_blank">André Lucas Trevizan</Link></small>
+    </div> 
   );
 }

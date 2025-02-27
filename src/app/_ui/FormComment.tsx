@@ -43,7 +43,7 @@ export default function FormComment({
           "
           onClick={() => setShowFormComment()}
         >Cancelar</button>
-        <button className="bg-blue-400 p-2 rounded text-white font-bold">{pending ? "Carregando" : "Comentar"}</button>
+        <button className="bg-[#00D1CD] p-2 rounded text-white font-bold">{pending ? "Carregando" : "Comentar"}</button>
       </div>
       {state?.message && (
         <ErrorMessage message={state.message} />

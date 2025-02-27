@@ -1,6 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { useActionState } from "react";
+import { handleUserSignUp } from "../sign_up/actions";
+import ErrorMessage from "./ErrorMessage";
+
+const initialState = {
+  message: ''
+};
 
 export default function FormSignUp() {
+  const [state, formAction, pending] = useActionState(handleUserSignUp, initialState);
+
   return (
     <form
       className="
@@ -11,6 +22,7 @@ export default function FormSignUp() {
         flex-col
         bg-white
       "
+      action={formAction}
     >
       <div className="text-center mb-4">
         <h1 className="text-lg">Criar Conta</h1>
@@ -30,6 +42,7 @@ export default function FormSignUp() {
             rounded
           "
           placeholder="Entre com seu nome"
+          name="name"
         />
       </div>
       <div
@@ -47,6 +60,7 @@ export default function FormSignUp() {
             rounded
           "
           placeholder="Entre com seu e-mail"
+          name="email"
         />
       </div>
       <div
@@ -64,21 +78,25 @@ export default function FormSignUp() {
             rounded
           "
           placeholder="Entre com sua senha"
+          name="password"
         />
       </div>
       <button
         className="
-          bg-blue-400
+          bg-[#00D1CD]
           text-white
           font-bold
           py-2
           px-4
           hover:bg-blue-300
         "
-      >Criar Conta</button>
+      >{pending ? "Carregando" : "Criar conta"}</button>
       <div className="text-center">
-        <Link href={"/sign_in"} className="text-blue-400 font-bold text-sm">Já possuo conta</Link>
+        <Link href={"/sign_in"} className="text-[#00D1CD] font-bold text-sm">Já possuo conta</Link>
       </div>
+      {state.message && (
+        <ErrorMessage message={state.message}/>
+      )}
     </form>
   );
 }

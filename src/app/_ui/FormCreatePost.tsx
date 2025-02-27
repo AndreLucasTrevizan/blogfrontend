@@ -24,10 +24,9 @@ export default function FormCreatePost() {
     >
       <div
         className="
-          bg-blue-400
           p-4
-          text-white
           font-bold
+          border-b
         "
       >
         <span className="text-lg">O que vai postar hoje?</span>
@@ -54,7 +53,7 @@ export default function FormCreatePost() {
         <button
           className="
             p-2
-            bg-blue-400
+            bg-[#00D1CD]
             rounded
             text-white
             font-bold

@@ -57,7 +57,7 @@ function MenuItem({
         items-center
         justify-center
         gap-4
-        hover:bg-blue-400
+        hover:bg-[#00D1CD]
         hover:text-white
       "
       href={menuItem.route}
