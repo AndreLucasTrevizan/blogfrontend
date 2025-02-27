@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { ErrorHandler } from "../_helper/Error";
 import { api } from "../_api";
+import { redirect } from "next/navigation";
 
 export interface UserType {
   id: number,
@@ -30,4 +31,12 @@ export const getUserDetails = async () => {
 
     return returnError;
   }
+}
+
+export const sessionLogout = async () => {
+  const serverCookies = await cookies();
+
+  serverCookies.delete("token");
+
+  redirect('/sign_in');
 }

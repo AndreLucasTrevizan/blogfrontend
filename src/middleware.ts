@@ -29,11 +29,11 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get("token");
 
-  if (authRoutes.some((route) => pathname.startsWith(route)) && !token) {
+  if (authRoutes.includes(pathname) && !token) {
     return NextResponse.redirect(new URL('/sign_in', request.url));
   }
   
-  if (notAuthRoutes.some((route) => pathname.startsWith(route)) && token) {
+  if (notAuthRoutes.includes(pathname) && token) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 

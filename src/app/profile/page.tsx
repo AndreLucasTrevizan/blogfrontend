@@ -1,4 +1,4 @@
-import { getUserDetails, UserType } from "./actions";
+import { getUserDetails, sessionLogout, UserType } from "./actions";
 
 export default async function Profile() {
   const user: UserType = await getUserDetails();
@@ -54,9 +54,9 @@ export default async function Profile() {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 justify-end items-start">
+        <form action={sessionLogout} className="flex flex-1 justify-end items-start">
           <button className="font-bold text-red-500">Encerrar seção</button>
-        </div>
+        </form>
       </div>
     </div>
   );
