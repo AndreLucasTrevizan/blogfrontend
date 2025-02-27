@@ -49,19 +49,17 @@ export default function Home() {
       "
     >
       <MenuHome />
-      {loadingPosts && (
+      {loadingPosts ? (
         <div
           className="text-center py-8"
         >
           <span>Carregando posts...</span>
         </div>
-      )}
-      {posts.length == 0 && (
+      ) : posts.length == 0 ? (
         <div>
           <h1 className="text-sm">Nenhum post foi cadastrado</h1>
         </div>
-      )}
-      {posts && (
+      ) : (
         posts.map((post) => (
           <PostComponent key={post.id} post={post} />
         ))
