@@ -99,21 +99,21 @@ export default function Home() {
       <div
         className="flex gap-4"
       >
-        <button
+        {posts.pages > 0 && <button
           disabled={page - 1 < 0}
           className="size-8 p-2 flex items-center justify-center rounded bg-white text-[#00D1CD]"
           onClick={() => decreasePage()}
         >
           <FaChevronLeft />
-        </button>
-        <Pagination amountOfPages={posts.pages} returnPage={getSelectedPage} />
-        <button
+        </button>}
+        <Pagination amountOfPages={posts.pages > 0 ? posts.pages : 1} returnPage={getSelectedPage} />
+        {posts.pages > 0 && <button
           disabled={page + 1 > posts.pages}
           className="size-8 p-2 flex items-center justify-center rounded bg-white text-[#00D1CD]"
           onClick={() => increasePage()}
         >
           <FaChevronRight />
-        </button>
+        </button>}
       </div>
     </div>
   );

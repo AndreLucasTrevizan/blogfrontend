@@ -5,15 +5,15 @@ import { PostType } from "../page";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import FormComment from "./FormComment";
-import { getDateWithHour } from "../_api/date";
+import { getDateWithHour } from "../_helper/date";
 
 export default function PostComponent({
   post
 }: {
   post: PostType
 }) {
-  const [showFormComment, setShowFormComment] = useState(false);
   const pathname = usePathname();
+  const [showFormComment, setShowFormComment] = useState(false);
 
   return (
     <div
@@ -60,7 +60,13 @@ export default function PostComponent({
           bg-white
         "
       >
-        <p>{post.body}</p>
+        <p
+          className={pathname == '/' ? `
+            overflow-hidden
+            text-justify
+            truncate
+          ` : ""}
+        >{post.body}</p>
       </div>
       <div
         className="bg-white rounded-bl rounded-br"

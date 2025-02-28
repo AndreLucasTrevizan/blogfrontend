@@ -72,6 +72,7 @@ export default function FormSignIn() {
           py-2
           px-4
           hover:bg-blue-300
+          rounded
         "
       >{pending ? "Carregando" : "Entrar"}</button>
       <div className="text-center">

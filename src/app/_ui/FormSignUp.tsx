@@ -90,6 +90,7 @@ export default function FormSignUp() {
           py-2
           px-4
           hover:bg-blue-300
+          rounded
         "
       >{pending ? "Carregando" : "Criar conta"}</button>
       <div className="text-center">

@@ -8,6 +8,7 @@ export default function SignIn() {
       className="
         md:w-3/4
         md:m-auto
+        p-4
         flex
         gap-4
         justify-center
