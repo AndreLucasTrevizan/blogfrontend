@@ -1,3 +1,4 @@
+import { getDateWithHour } from "../_api/date";
 import { CommentType } from "../posts/[id]/actions";
 
 export default function CommentComponent({
@@ -20,6 +21,7 @@ export default function CommentComponent({
         className="
           flex
           flex-col
+          text-sm
         "
       >
         <span>{comment.user.name}</span>
@@ -30,13 +32,7 @@ export default function CommentComponent({
             mb-2
           "
         >
-          <small>{new Date(comment.createdAt).toLocaleDateString('pt-br', {
-            dateStyle: 'short'
-          })}</small>
-          <small>{new Date(comment.createdAt).toLocaleTimeString('pt-br', {
-            hour: '2-digit',
-            minute: '2-digit'
-          })}</small>
+          {getDateWithHour(comment.createdAt)}
         </div>
       </div>
       <hr />

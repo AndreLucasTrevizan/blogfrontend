@@ -1,3 +1,4 @@
+import { getDateWithHour } from "../_api/date";
 import { getUserDetails, sessionLogout, UserType } from "./actions";
 
 export default async function Profile() {
@@ -40,22 +41,16 @@ export default async function Profile() {
             className="flex flex-wrap justify-between"
           >
             <label>Criado em</label>
-            <div className="w-max flex gap-4">
-              <span className="text-gray-400">{new Date(user.createdAt).toLocaleDateString('pt-br')}</span>
-              <span className="text-gray-400">{new Date(user.createdAt).toLocaleTimeString('pt-br', {
-                timeStyle: 'short'
-              })}</span>
+            <div className="w-max flex gap-4 text-gray-400">
+              {getDateWithHour(user.createdAt)}
             </div>
           </div>
           <div
             className="flex flex-wrap justify-between"
           >
             <label>Atualizado em</label>
-            <div className="w-max flex gap-4">
-              <span className="text-gray-400">{new Date(user.updatedAt).toLocaleDateString('pt-br')}</span>
-              <span className="text-gray-400">{new Date(user.updatedAt).toLocaleTimeString('pt-br', {
-                timeStyle: 'short'
-              })}</span>
+            <div className="w-max flex gap-4 text-gray-400">
+              {getDateWithHour(user.createdAt)}
             </div>
           </div>
         </div>

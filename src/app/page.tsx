@@ -11,8 +11,8 @@ export interface PostType {
   id: number
   title: string
   body: string
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
   user: UserPostType
 }
 

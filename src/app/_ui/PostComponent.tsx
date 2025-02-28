@@ -5,6 +5,7 @@ import { PostType } from "../page";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import FormComment from "./FormComment";
+import { getDateWithHour } from "../_api/date";
 
 export default function PostComponent({
   post
@@ -48,13 +49,7 @@ export default function PostComponent({
               mb-2
             "
           >
-            <small>{new Date(post.createdAt).toLocaleDateString('pt-br', {
-              dateStyle: 'short'
-            })}</small>
-            <small>{new Date(post.createdAt).toLocaleTimeString('pt-br', {
-              hour: '2-digit',
-              minute: '2-digit'
-            })}</small>
+            <small>{getDateWithHour(post.createdAt)}</small>
           </div>
         </div>
         <span>{post.title}</span>
