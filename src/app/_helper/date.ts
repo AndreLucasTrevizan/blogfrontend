@@ -1,4 +1,3 @@
-import tz from 'moment-timezone';
 import moment from 'moment/min/moment-with-locales';
 
 moment.locale(process.env.dateLang);
