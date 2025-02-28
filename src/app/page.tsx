@@ -40,9 +40,9 @@ export default function Home() {
   return (
     <div
       className="
-        m-auto
+        md:m-auto
+        md:w-3/4
         p-4
-        w-3/4
         flex
         flex-col
         gap-4

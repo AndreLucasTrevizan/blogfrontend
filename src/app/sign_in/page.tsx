@@ -6,11 +6,12 @@ export default function SignIn() {
   return (
     <div
       className="
-        w-3/4
-        m-auto
-        p-4
+        md:w-3/4
+        md:m-auto
         flex
+        gap-4
         justify-center
+        w-full
       "
     >
       <FormSignIn />

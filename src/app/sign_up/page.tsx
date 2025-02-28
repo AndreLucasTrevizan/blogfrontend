@@ -4,9 +4,10 @@ export default function SignUp() {
   return (
     <div
       className="
-        w-3/4
-        m-auto
-        p-4
+        md:w-3/4
+        md:m-auto
+        md:p-4
+        w-full
         flex
         justify-center
       "

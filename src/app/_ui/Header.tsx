@@ -20,7 +20,8 @@ export default function Header() {
     >
       <div
         className="
-          w-3/4
+          md:w-3/4
+          w-full
           p-4
         "
       >

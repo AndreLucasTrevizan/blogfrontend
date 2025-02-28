@@ -16,11 +16,12 @@ export default function FormSignUp() {
     <form
       className="
         p-4
-        w-96
+        md:w-96
         flex
         gap-4
         flex-col
         bg-white
+        w-full
       "
       action={formAction}
     >

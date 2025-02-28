@@ -29,7 +29,7 @@ const menuProps: MenuPropsType[] = [
 export default function MenuHome() {
   return (
     <div
-      className="flex justify-center gap-4"
+      className="flex flex-col md:flex-row md:justify-center gap-4"
     >
       {menuProps.map((menuItem) => (
         <MenuItem key={menuItem.name} menuItem={menuItem} />
@@ -49,11 +49,9 @@ function MenuItem({
         flex
         flex-col
         p-4
-        w-48
+        md:w-48
         bg-white
         rounded
-        flex
-        flex-col
         items-center
         justify-center
         gap-4

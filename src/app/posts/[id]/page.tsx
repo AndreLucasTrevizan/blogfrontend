@@ -14,9 +14,10 @@ export default async function PostDetail({
   return (
     <div
       className="
-        m-auto
-        w-3/4
-        p-4
+        md:m-auto
+        md:w-3/4
+        md:p-4
+        p-2
         flex
         flex-col
         gap-4

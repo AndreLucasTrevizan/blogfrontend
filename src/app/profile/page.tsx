@@ -6,9 +6,10 @@ export default async function Profile() {
   return (
     <div
       className="
-        p-4
-        m-auto
-        w-3/4
+        md:p-4
+        md:m-auto
+        md:w-3/4
+        p-2
         flex
         flex-col
         gap-4
@@ -26,31 +27,35 @@ export default async function Profile() {
           gap-4
         "
       >
-        <div className="flex flex-col gap-4 w-96">
-          <div className="flex justify-between">
+        <div className="flex flex-wrap flex-col gap-4 w-96">
+          <div className="flex flex-wrap justify-between">
             <label>Nome</label>
-            <span>{user.name}</span>
+            <span className="text-gray-400">{user.name}</span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-wrap justify-between">
             <label>E-mail</label>
-            <span>{user.email}</span>
+            <span className="text-gray-400">{user.email}</span>
           </div>
           <div
-            className="flex justify-between"
+            className="flex flex-wrap justify-between"
           >
             <label>Criado em</label>
             <div className="w-max flex gap-4">
-              <span>{new Date(user.createdAt).toLocaleDateString('pt-br')}</span>
-              <span>{new Date(user.createdAt).toLocaleTimeString('pt-br')}</span>
+              <span className="text-gray-400">{new Date(user.createdAt).toLocaleDateString('pt-br')}</span>
+              <span className="text-gray-400">{new Date(user.createdAt).toLocaleTimeString('pt-br', {
+                timeStyle: 'short'
+              })}</span>
             </div>
           </div>
           <div
-            className="flex justify-between"
+            className="flex flex-wrap justify-between"
           >
             <label>Atualizado em</label>
             <div className="w-max flex gap-4">
-              <span>{new Date(user.updatedAt).toLocaleDateString('pt-br')}</span>
-              <span>{new Date(user.updatedAt).toLocaleTimeString('pt-br')}</span>
+              <span className="text-gray-400">{new Date(user.updatedAt).toLocaleDateString('pt-br')}</span>
+              <span className="text-gray-400">{new Date(user.updatedAt).toLocaleTimeString('pt-br', {
+                timeStyle: 'short'
+              })}</span>
             </div>
           </div>
         </div>
