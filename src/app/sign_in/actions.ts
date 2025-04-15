@@ -6,9 +6,9 @@ import { ErrorHandler } from "../_helper/Error";
 import { redirect } from "next/navigation";
 
 export const handleUserSignIn = async (prevState: { message: string }, formData: FormData) => {
-  const serverCookies = await cookies();
-
   try {
+    const serverCookies = await cookies();
+
     const signIn = {
       email: formData.get("email"),
       password: formData.get("password"),

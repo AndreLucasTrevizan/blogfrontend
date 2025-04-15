@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import FormComment from "./FormComment";
 import { getDateWithHour } from "../_helper/date";
+import PostOption from "./PostOptions";
 
 export default function PostComponent({
   post
@@ -39,18 +40,23 @@ export default function PostComponent({
         "
       >
         <div
-          className="text-sm text-gray-500"
+          className="flex justify-between"
         >
-          <span>{post.user.name}</span>
           <div
-            className="
-              flex
-              gap-4
-              mb-2
-            "
+            className="text-sm text-gray-500"
           >
-            <small>{getDateWithHour(post.createdAt)}</small>
+            <span>{post.user.name}</span>
+            <div
+              className="
+                flex
+                gap-4
+                mb-2
+              "
+            >
+              <small>{getDateWithHour(post.createdAt)}</small>
+            </div>
           </div>
+          <PostOption post={post} />
         </div>
         <span>{post.title}</span>
       </div>
