@@ -4,15 +4,13 @@ import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/r
 import { Fragment } from 'react';
 import { FaEllipsisVertical } from 'react-icons/fa6';
 import { PostType } from '../page';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 export default function PostOptions({
   post
 }: {
   post: PostType
 }) {
-  const router = useRouter();
-
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -41,7 +39,7 @@ export default function PostOptions({
                   className={`${
                     active ? 'bg-[#00D1CD] text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  onClick={() => router.push(`/posts/edit/${post.id}`)}
+                  onClick={() => redirect(`/posts/edit/${post.id}`)}
                 >
                   {active ? (
                     <EditActiveIcon />

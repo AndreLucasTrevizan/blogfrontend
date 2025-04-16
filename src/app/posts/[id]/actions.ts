@@ -16,7 +16,13 @@ export interface CommentType {
 export const getPostByID = async (postId: number) => {
   const serverCookies = await cookies();
 
-  const token = serverCookies.get("token")?.value;
+  let token = '';
+
+  if (serverCookies.get("signed_data") != undefined) {
+    const signed_data = serverCookies.get("signed_data")!.value;
+
+    token = JSON.parse(signed_data!!).token;
+  }
 
   try {
     const response = await api.get(`/posts`, {

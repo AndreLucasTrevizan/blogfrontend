@@ -1,86 +1,118 @@
 "use client";
 
-import Link from "next/link";
-import { useActionState } from "react";
-import { handleUserSignIn } from "../sign_in/actions";
+import { useState } from "react";
+import { Button, Field, Fieldset, Input, Label, Legend } from "@headlessui/react";
+import { ClipLoader } from "react-spinners";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ErrorHandler } from "../_helper/Error";
+import { api } from "../_api";
 import ErrorMessage from "./ErrorMessage";
+import { redirect } from "next/navigation";
+import { handleUserSignIn } from "../sign_in/actions";
+
+interface SignInData {
+  email: string;
+  password: string;
+}
 
 const initialState = {
-  message: "",
-};
+  message: ''
+}
 
 export default function FormSignIn() {
-  const [state, formAction, pending] = useActionState(handleUserSignIn, initialState);
+  const schema = yup.object().shape({
+    email: yup.string().email('Entre com um endereço de e-mail valido').required('Preencha o campo e-mail'),
+    password: yup.string().min(8, 'A senha deve conter pelo menos 8 caracteres').max(32, 'A senha deve conter até 32 caracteres').required(),
+  });
+  
+  const {
+    register,
+    handleSubmit,
+    formState: {
+      errors,
+    },
+    reset
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [apiMessage, setApiMessage] = useState<string>('');
 
-  return (
-    <form
-      className="
-        p-4
-        md:w-96
-        flex
-        gap-4
-        flex-col
-        bg-white
-        w-full
-      "
-      action={formAction}
-    >
-      <div className="text-center mb-4">
-        <h1 className="text-lg">Acessar sistema</h1>
-      </div>
+  const signIn: SubmitHandler<SignInData> = async (values) => {
+    setIsLoading(true);
+
+    try {
+      const response = await api.post("/sign_in", values, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+  
+      const {
+        data
+      } = response;
+    } catch (error) {
+      const errorHandler = new ErrorHandler(error);
+      
+      setApiMessage(errorHandler.message);
+    } finally {
+      setIsLoading(false);
+    }
+
+    redirect('/');
+  }
+
+  if (isLoading) {
+    return (
       <div
-        className="
-          flex
-          flex-col
-        "
+        className="bg-white rounded-xl flex items-center justify-center w-2/3 p-6"
       >
-        <label>E-mail</label>
-        <input
-          type="email"
-          className="
-            p-2
-            border
-            rounded
-          "
-          placeholder="Entre com seu e-mail"
-          name="email"
+        <ClipLoader
+          color="#000"
+          loading={isLoading}
+          size={80}
+          aria-label="Loading Spinner"
         />
       </div>
-      <div
-        className="
-          flex
-          flex-col
-        "
+    );
+  } else {
+    return (
+      <Fieldset
+        as='form'
+        onSubmit={handleSubmit(handleUserSignIn)}
+        className="space-y-6 rounded-xl bg-white p-6 sm:p-10 w-2/3"
       >
-        <label>Senha</label>
-        <input
-          type="password"
-          className="
-            p-2
-            border
-            rounded
-          "
-          placeholder="Entre com sua senha"
-          name="password"
-        />
-      </div>
-      <button
-        className="
-          bg-[#00D1CD]
-          text-white
-          font-bold
-          py-2
-          px-4
-          hover:bg-blue-300
-          rounded
-        "
-      >{pending ? "Carregando" : "Entrar"}</button>
-      <div className="text-center">
-        <Link href={"/sign_up"} className="text-[#00D1CD] font-bold text-sm">Criar conta</Link>
-      </div>
-      {state.message && (
-        <ErrorMessage message={state.message}/>
-      )}
-    </form>
-  );
+        <Legend className="text-base/7 font-semibold">Acessar Sistema</Legend>
+        <Field>
+          <Label className="text-sm6 font-medium">E-mail</Label>
+          <Input
+            type="email"
+            className='mt-3 block w-full rounded-lg border bg-white/5 py-1.5 px-3 text-sm/6'
+            placeholder="Digite seu e-mail"
+            {...register('email')}
+          />
+          {errors.email && <small className="text-red-500">{errors.email.message}</small>}
+        </Field>
+        <Field>
+          <Label className="text-sm6 font-medium">Senha</Label>
+          <Input
+            type="password"
+            className='mt-3 block w-full rounded-lg border bg-white/5 py-1.5 px-3 text-sm/6'
+            placeholder="Digite sua senha"
+            {...register('password')}
+          />
+          {errors.password && <small className="text-red-500">{errors.password.message}</small>}
+        </Field>
+        <Button
+          className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data- [hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+          type="submit"
+        >
+          Acessar
+        </Button>
+        <ErrorMessage message={apiMessage} />
+      </Fieldset>
+    );
+  }
 }

@@ -8,6 +8,14 @@ import { cookies } from "next/headers";
 export const createPost = async (prevState: { message: string }, formData: FormData) => {
   const serverCookies = await cookies();
 
+  let token = '';
+
+  if (serverCookies.get("signed_data") != undefined) {
+    const signed_data = serverCookies.get("signed_data")!.value;
+
+    token = JSON.parse(signed_data!!).token;
+  }
+
   try {
     const data = {
       title: formData.get("title"),
@@ -17,7 +25,7 @@ export const createPost = async (prevState: { message: string }, formData: FormD
     await api.post("/posts", data, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${serverCookies.get("token")?.value}`
+        "Authorization": `Bearer ${token}`
       }
     });
   } catch (error) {

@@ -19,13 +19,13 @@ const notAuthRoutes = [
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const token = req.cookies.get("token");
+  const signed_data = req.cookies.get("signed_data");
   
-  if (notAuthRoutes.includes(pathname) && token) {
+  if (notAuthRoutes.includes(pathname) && signed_data) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  if (!token && !notAuthRoutes.includes(pathname)) {
+  if (!signed_data && !notAuthRoutes.includes(pathname)) {
     return NextResponse.redirect(new URL('/sign_in', req.url));
   }
 

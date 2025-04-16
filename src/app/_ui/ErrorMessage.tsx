@@ -5,9 +5,9 @@ export default function ErrorMessage({
 }) {
   return (
     <div
-      className="p-4 bg-red-500 text-white font-bold text-center rounded"
+      className="text-red-500 font-bold text-center"
     >
-      <span>{message}</span>
+      <span className="break-words">{message}</span>
     </div>
   );
 }
