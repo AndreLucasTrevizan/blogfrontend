@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   distDir: 'build',
   env: {
-    apiUrl: 'http://localhost:3333',
+    apiUrl: 'https://elegant-achievement-production.up.railway.app',
     dateLang: 'pt-br'
   }
 };

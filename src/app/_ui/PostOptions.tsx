@@ -44,15 +44,9 @@ export default function PostOptions({
                   onClick={() => router.push(`/posts/edit/${post.id}`)}
                 >
                   {active ? (
-                    <EditActiveIcon
-                      className="mr-2 h-5 w-5"
-                      aria-hidden="true"
-                    />
+                    <EditActiveIcon />
                   ) : (
-                    <EditInactiveIcon
-                      className="mr-2 h-5 w-5"
-                      aria-hidden="true"
-                    />
+                    <EditInactiveIcon />
                   )}
                   Editar
                 </button>
@@ -65,38 +59,46 @@ export default function PostOptions({
   )
 }
 
-function EditInactiveIcon(props) {
+function EditInactiveIcon() {
   return (
-    <svg
-      {...props}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className='mr-2 h-5 w-5'
+      aria-hidden="true"
     >
-      <path
-        d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#FFFFFF"
-        stroke="#00D1CD"
-        strokeWidth="2"
-      />
-    </svg>
+      <svg
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 13V16H7L16 7L13 4L4 13Z"
+          fill="#FFFFFF"
+          stroke="#00D1CD"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
   )
 }
 
-function EditActiveIcon(props) {
+function EditActiveIcon() {
   return (
-    <svg
-      {...props}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div 
+      className="mr-2 h-5 w-5"
+      aria-hidden="true"
     >
-      <path
-        d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#00D1CD"
-        stroke="#FFFFFF"
-        strokeWidth="2"
-      />
-    </svg>
+      <svg
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 13V16H7L16 7L13 4L4 13Z"
+          fill="#00D1CD"
+          stroke="#FFFFFF"
+          strokeWidth="2"
+        />
+      </svg>
+    </div>
   )
 }
